@@ -1,0 +1,4 @@
+Notes: 
+
+1. Serialising and deserialising in Passport: https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize#
+2. req, res, next: http://expressjs.com/en/guide/using-middleware.html (Using middleware)

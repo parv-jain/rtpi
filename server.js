@@ -21,7 +21,7 @@ app.use(cookieParser());
 var passport = require('passport');
 var expressSession = require('express-session');
 
-app.use(expressSession({secret: 'mySecretKey'}));
+app.use(expressSession({ secret: 'mySecretKey' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -29,13 +29,14 @@ app.use(passport.session());
 var initPassport = require('./app/passport/init');
 initPassport(passport);
 
+// routes
 var routes = require('./app/routes/')(app);
 
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
 
-app.listen(app.get('port'), function(){
-	console.log('Server started on port '+app.get('port'));
+app.listen(app.get('port'), function() {
+    console.log('Server started on port ' + app.get('port'));
 });
 module.exports = app;

@@ -1,0 +1,12 @@
+<h1>Hello, {{username}}</h1>
+<h3>The price changed for your product: <span style="color: red;">{{product}}</span></h3>
+<h3>Last Price: <strong>Rs.{{previous_price}}</strong></h4>
+<h3>Current Price: <strong>Rs.{{current_price}}</strong></h4>
+{{#if price_inc}}
+    <h3>The price increased by <span style="color: red;">Rs.{{price_inc}}</span><i class="fa fa-arrow-up fa-2x" style="color: red;"></i></h3>
+{{/if}}
+{{#if price_dec}}
+    <h3>The price decreased by <span style="color: green;">Rs.{{price_dec}}</span><i class="fa fa-arrow-down fa-2x" style="color: green;"></i></h3>
+{{/if}}
+Regards,
+Real Time Product Inspector (R.T.P.I)
