@@ -6,7 +6,7 @@ module.exports = function(app) {
 
     /* GET index page */
     app.get('/', function(req, res) {
-        res.json({ message: 'hooray! welcome to our api!' });
+        res.json({ message: 'This is the index page - Landing Page' });
     });
 
 
