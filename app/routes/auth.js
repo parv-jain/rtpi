@@ -52,7 +52,10 @@ module.exports = function(app) {
         function(req, res) {
             // The request will be redirected to Google for authentication, so
             // this function will not be called.
+
             // this is the callback function for the google auth, which is EXPLICITLY written just below this
+
+
         });
 
     // handle the callback after google has authenticated the user
