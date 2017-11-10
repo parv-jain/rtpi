@@ -3,7 +3,9 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-
+var exphbs = require('express-handlebars');
+var favicon = require('serve-favicon');
+var path = require('path');
 var dbConfig = require('./app/config/database');
 
 // Connect to DB
@@ -11,10 +13,21 @@ mongoose.connect(dbConfig.url);
 
 var app = express();
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+app.set('view engine', 'handlebars');
+
+// using public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Configuring Passport
 

@@ -10,7 +10,7 @@ module.exports = function(passport) {
 passport.use(new GoogleStrategy({
     clientID: '581129061815-2tv9quhvi5cgv0baf5lkc8aaf1asvppj.apps.googleusercontent.com',
     clientSecret: '-mVe3rCoVp9LNr8ZYSqc-5DM',
-    callbackURL: 'https://rtpi.herokuapp.com/auth/google/callback',
+    callbackURL: 'http://localhost:3000/auth/google/callback',
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {

@@ -1,0 +1,31 @@
+	<div class="jumbotron jumbotron-fluid text-center">
+	  <div class="container">
+	    <h1 class="">Since, you always want to buy your wishlist items at the<br/><span class="highlight">best</span> price, here your wish comes true.</h1>
+	    <p class="lead">Just enter the URL of the product in the search box.</p>
+	  </div>
+	</div>
+
+
+	<div class="product-search-box">
+		<div class="" style="width: 50%; margin: auto;">
+			<form action="" id="searchform" method="post">
+		    <div class="input-group">
+						<input type="text" id="url" name="url" class="form-control" placeholder="Enter the product URL here." aria-label="Search for..." style="padding: 14px 20px; font-size: 20px;">
+		      	<span class="input-group-btn">
+		        	<button class="btn btn-primary" id="search" style="padding: 14px; font-size: 20px;" type="submit">Go!</button>
+		      	</span>
+		    </div>
+			</form>
+		</div>
+	</div>
+	<script>
+	$('#searchform').submit(function(){
+	  var url = $('#url').val();
+		if(url.includes('flipkart')){
+	  	$(this).attr('action', "flipkart");
+		}
+		else if(url.includes('amazon')){
+			$(this).attr('action', "amazon/products");			
+		}
+	});
+	</script>

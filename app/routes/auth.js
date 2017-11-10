@@ -14,20 +14,20 @@ module.exports = function(app){
 
 	/* GET index page */
 	app.get('/', function(req, res) {
-	    res.json({ message: 'hooray! welcome to our api!' });
+	    res.render('search', { title: 'Home', user: req.user });
 	});
 
 
 	/* GET login page. */
 	app.get('/auth', function(req, res) {
     	// Display the Login page with any flash message, if any
-		res.json({"page": "login"});
+			res.render('login', { title: 'Auth' });
 	});
 
 
 	/* GET User Page */
 	app.get('/user', isAuthenticated, function(req, res){
-		res.render({"page": "user"});
+		res.render('user', { title: 'Home', user: req.user });
 	});
 
 	/* Handle Logout */

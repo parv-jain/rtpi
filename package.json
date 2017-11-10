@@ -21,6 +21,8 @@
     "mongoose": "*",
     "nodemailer": "*",
     "cheerio": "*",
-    "request": "*"
+    "request": "*",
+    "express-handlebars": "*",
+    "serve-favicon": "*"
   }
 }

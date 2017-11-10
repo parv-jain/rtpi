@@ -1,0 +1,83 @@
+body {
+	background: #efefef;
+}
+
+#top-bar {
+	background: #007bff;
+	height: 4px;
+}
+
+p {
+	font-weight: lighter !important;
+}
+
+.navbar {
+	padding: 0 0 0 20px;
+}
+
+.navbar li a{
+	padding: 20px !important;
+}
+
+.navbar li a:hover {
+	background: #e7e7e7;
+	color: #007bff !important;
+}
+
+.jumbotron {
+	background: rgba(0,0,0,0) !important; 
+	padding: 40px;
+	margin: 0;
+}
+
+.product-search-box {
+	padding: 50px;
+}
+
+.product {
+	background: #ddd;
+	padding: 40px 100px;
+	display: none;
+	margin: 0;
+}
+
+.signin {
+	text-align: center;
+	position: relative;
+	margin: 250px 0;
+	display: none;
+}
+
+.product img {
+	width: 100%;
+}
+
+.google {
+	color: #fff;
+	background: #dd2222;
+}
+
+.facebook {
+	color: #fff;
+	background: #4267b2;
+}
+
+.watchlist {
+	padding: 50px;
+	display: none;
+}
+
+.profile-photo {
+	width: 50px;
+	border-radius: 50%;
+	margin: 7px;
+}
+
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	padding: 14px;
+	text-align: center;
+	color: rgba(0,0,0,.5);
+}
