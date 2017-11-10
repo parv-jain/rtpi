@@ -36,6 +36,11 @@ module.exports = function(app){
 		res.redirect('/auth');
 	});
 
+	/* route for tracking product */
+	app.get('/track', isAuthenticated, function(req, res) {
+		// left to code
+	});
+
 	// route for facebook authentication and login
 	app.get('/auth/facebook',
 		passport.authenticate('facebook', { scope : ['email'] }

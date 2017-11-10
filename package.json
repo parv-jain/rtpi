@@ -23,6 +23,7 @@
     "cheerio": "*",
     "request": "*",
     "express-handlebars": "*",
-    "serve-favicon": "*"
+    "serve-favicon": "*",
+    "moment": "*"
   }
 }
