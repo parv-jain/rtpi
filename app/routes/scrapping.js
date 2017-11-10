@@ -14,7 +14,7 @@ module.exports = function(app){
         json.current_price = $("[class='_1vC4OE _37U4_g']").text().replace('₹', '');
         json.mrp = $("[class='_3auQ3N _16fZeb']").text().replace('₹', '');
       }
-      res.json(json);
+      res.render('product', { title: 'Product', product: json});
     })
   })
 
@@ -43,7 +43,7 @@ module.exports = function(app){
               title = $("[id='productTitle']").text();
               json.title = title;
 
-              res.json(json);
+              res.render('product', { title: 'Product', product: json});
           }
       });
   });
@@ -80,7 +80,7 @@ module.exports = function(app){
               title = title.replace(/[^a-zA-Z ]/g, "").trim(0, 2);
               json.title = title;
 
-              res.json(json);
+              res.render('product', { title: 'Product', product: json});
           }
       });
   });
