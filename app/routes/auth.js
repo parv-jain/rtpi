@@ -73,13 +73,14 @@ module.exports = function(app){
 				console.log('Records fetched successfully');
 				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
-							wishes.append(data);
+							wishes.push(data);
 							res.json(data);
 					})
 				});
 			}
 		});
-		res.json(wishes);
+		
+		//res.json(wishes);
 		//res.render('wishlist', { title: 'Wishlist', wishes: wishes, user: req.user});
 	});
 
