@@ -64,6 +64,7 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
+		/*var datas = [];
 		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
@@ -75,7 +76,7 @@ module.exports = function(app){
 					})
 				});
 			}
-		});
+		});*/
 		res.render('wishlist', { title: 'Wishlist', user: req.user});
 	});
 
