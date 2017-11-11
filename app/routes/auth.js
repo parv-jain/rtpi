@@ -81,8 +81,8 @@ module.exports = function(app){
 				});
 			}
 		});
-
-		res.render('wishlist', { title: 'Wishlist', user: req.user, dataArray: dataArray});
+		res.end(dataArray);
+		//res.render('wishlist', { title: 'Wishlist', user: req.user, dataArray: dataArray});
 	});
 
 	// route for facebook authentication and login
