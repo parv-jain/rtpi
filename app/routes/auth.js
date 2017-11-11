@@ -64,7 +64,7 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
-		/*var datas = [];
+		var wishes = [];
 		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
@@ -72,12 +72,12 @@ module.exports = function(app){
 				console.log('Records fetched successfully');
 				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
-							datas.push(data);
+							wishes.push(data);
 					})
 				});
 			}
-		});*/
-		res.render('wishlist', { title: 'Wishlist', user: req.user});
+		});
+		res.render('wishlist', { title: 'Wishlist', data: wishes, user: req.user});
 	});
 
 	// route for facebook authentication and login
