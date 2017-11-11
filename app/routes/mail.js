@@ -1,12 +1,15 @@
 var nodemailer = require('nodemailer');
 var fs = require('fs');
-var productDetails = require('../data/RimezsBelliesBlack.json');
 var hbs = require('nodemailer-express-handlebars');
 module.exports = function(app) {
 
     app.post('/sendMail', function(req, res) {
 
-        var transporter = nodemailer.createTransport({
+        var email = req.body.user;
+        var product = req.body.product;
+        console.log(email);
+        console.log(product);
+      /*  var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
                 user: 'rtpiservice@gmail.com',
@@ -27,9 +30,7 @@ module.exports = function(app) {
 
         price_inc = "";
         price_dec = "";
-        current_price = productDetails.current_price.replace(",", "");
         current_price = parseInt(current_price);
-        last_price = productDetails.previous_prices.price1.replace(",", "");
         last_price = parseInt(last_price);
         price_difference = current_price - last_price;
         if (price_difference > 0) {
@@ -47,7 +48,7 @@ module.exports = function(app) {
         // The mail will be sent only when there is a price change (increase, decrease)
 
 
-        var mailOptions = {
+      /*  var mailOptions = {
             from: 'rtpiservice@gmail.com',
             to: req.body.to,
             subject: 'Price Change Notification',
@@ -68,7 +69,7 @@ module.exports = function(app) {
             else {
                 res.json({ "success": info.response });
             }
-        });
+        });*/
 
     });
 }
