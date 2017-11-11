@@ -24,7 +24,7 @@
   var wishlist = {{{wishes}}};
   wishlist.forEach(function(key){
     key.forEach(function(k){
-        var row='<tr><td>'+k._id+'</td><td>'+k.title+'</td><td>'+k.current_price+'</td><td>'+k.current_time+'</td><td>'+k.mrp+'</td><td><form action="/sendMail" method="post"><input type="hidden" name="user" value="{{user.google.email}}{{user.fb.email}}"><input type="hidden" name="product" value="'+k+'"><button class="btn btn-info" type="submit">Set Alerts</button></form></td></tr>';
+        var row='<tr><td>'+k._id+'</td><td>'+k.title+'</td><td>'+k.current_price+'</td><td>'+k.current_time+'</td><td>'+k.mrp+'</td><td><form action="/sendMail" method="post"><input type="hidden" name="user" value="{{user.google.email}}{{user.fb.email}}"><input type="hidden" name="product" value="'+k._id+'"><button class="btn btn-info" type="submit">Set Alerts</button></form></td></tr>';
         document.getElementById('wishes').innerHTML+=row;
     });
   });

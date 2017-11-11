@@ -7,7 +7,7 @@ module.exports = function(app) {
 
         var user = req.body.user;
         var product = req.body.product;
-        res.end(user+JSON.stringify(product)+JSON.stringify(product).title+product.title);
+        res.end(user+product);
 
       /*  var transporter = nodemailer.createTransport({
             service: 'gmail',
