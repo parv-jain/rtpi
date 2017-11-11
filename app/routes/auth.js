@@ -50,8 +50,8 @@ module.exports = function(app){
 		var user_id = query.user_id;
 
 		var newWishlist = new Wishlist();
-		newWishlist.user_id = user._id;
-		newWishlist.product_id = product._id;
+		newWishlist.user_id = user_id;
+		newWishlist.product_id = product_id;
 		newWishlist.save(function(err) {
 			if (err)
 					throw err;
