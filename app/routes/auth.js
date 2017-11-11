@@ -45,6 +45,8 @@ module.exports = function(app){
 		var product_id = req.body.product_id;
 		var user_id = req.body.user_id;
 		//check if product already exists
+		res.render(product_id);
+		res.render(user_id);
 		Product.findOne({ '_id' : product_id }, function(err, product) {
 			if (err)
 				console.log(err);
