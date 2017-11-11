@@ -64,7 +64,7 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
-		wishes = new JSONArray();
+		wishes = new Array();
 		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
