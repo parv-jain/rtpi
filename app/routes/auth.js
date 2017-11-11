@@ -64,7 +64,7 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
-		var wishes = [];
+		var wishes = [],i=0;
 		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
@@ -72,14 +72,13 @@ module.exports = function(app){
 				console.log('Records fetched successfully');
 				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
-							wishes.push(data);
-							res.json(data);
+							wishes[i] = data;
+							i+=1;
 					})
 				});
 			}
 		});
-		//res.json(req.user._id);
-		//res.json(wishes);
+		res.json(wishes);
 		//res.render('wishlist', { title: 'Wishlist', wishes: wishes, user: req.user});
 	});
 
