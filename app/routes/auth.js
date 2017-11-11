@@ -48,9 +48,8 @@ module.exports = function(app){
 
 		var product_id = query.product_id;
 		var user_id = query.user_id;
-		res.end(product_id);
-		res.end(user_id);
-		/*var newWishlist = new Wishlist();
+
+		var newWishlist = new Wishlist();
 		newWishlist.user_id = user._id;
 		newWishlist.product_id = product._id;
 		newWishlist.save(function(err) {
@@ -59,8 +58,15 @@ module.exports = function(app){
 			else{
 				console.log('Details saved to database');
 			}
-		});*/
+		});
+		res.render('addedtowishlist', { title: '+1 Wishlist', user: req.user });
 	});
+
+	// route for Wishlist
+	app.get('/wishlist', isAuthenticated, function(req, res){
+		res.render('wishlist', { title: 'Wishlist', user: req.user });
+	});
+
 	// route for facebook authentication and login
 	app.get('/auth/facebook',
 		passport.authenticate('facebook', { scope : ['email'] }
@@ -74,6 +80,7 @@ module.exports = function(app){
 			failureRedirect : '/auth'
 		})
 	);
+
 
   // route for google authentication and login
   app.get('/auth/google',
