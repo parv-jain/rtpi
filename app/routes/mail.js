@@ -17,14 +17,15 @@ module.exports = function(app) {
           if(err)
             console.log(err);
           else
-            userData = userdata;
+            userData = JSON.stringify(userdata);
         });
         Product.findOne({'_id' : product},function(err,productdata) {
           if(err)
             console.log(err);
           else
-            productData = productdata;
+            productData = JSON.stringify(productdata);
         });
+        res.end('user '+user+' '+userData+' product'+product);
         var priceHistoryFile = require('../data/'+productData.price_history_file);
         var transporter = nodemailer.createTransport({
             service: 'gmail',
