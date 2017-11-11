@@ -24,6 +24,7 @@
     "request": "*",
     "express-handlebars": "*",
     "serve-favicon": "*",
-    "moment": "*"
+    "moment": "*",
+    "nodemailer-express-handlebars": "*"
   }
 }
