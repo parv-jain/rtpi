@@ -48,8 +48,8 @@ module.exports = function(app){
 
 		var product_id = query.product_id;
 		var user_id = query.user_id;
-		res.render(product_id);
-		res.render(user_id);
+		res.end(product_id);
+		res.end(user_id);
 		/*var newWishlist = new Wishlist();
 		newWishlist.user_id = user._id;
 		newWishlist.product_id = product._id;
