@@ -77,7 +77,7 @@ module.exports = function(app){
 				});
 			}
 		});
-		res.render('wishlist', { title: 'Wishlist', data: wishes, user: req.user});
+		res.render('wishlist', { title: 'Wishlist', wishes: wishes, user: req.user});
 	});
 
 	// route for facebook authentication and login
