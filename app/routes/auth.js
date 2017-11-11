@@ -8,6 +8,7 @@ var isAuthenticated = function (req, res, next) {
 	// if the user is not authenticated then redirect him to the login page
 	res.redirect('/auth');
 }
+var url = require('url');
 
 var Product = require('../models/product');
 var User = require('../models/user');
@@ -42,8 +43,11 @@ module.exports = function(app){
 	/* route for tracking product */
 	app.get('/track', isAuthenticated, function(req, res) {
 		// left to code
-		var product_id = req.body.product_id;
-		var user_id = req.body.user_id;
+		var url_parts = url.parse(request.url, true);
+		var query = url_parts.query;
+
+		var product_id = query.product_id;
+		var user_id = query.user_id;
 		//check if product already exists
 		res.render(product_id);
 		res.render(user_id);
