@@ -11,22 +11,52 @@ module.exports = function(app) {
 
         var user = req.body.user;
         var product = req.body.product;
-        var userData = '';
-        var productData = '';
-        User.findOne({'_id' : user},function(err,userdata) {
+
+        var price_history_file = null;
+        var current_price = null;
+        var title = null;
+
+        var useremail = null;
+        var firstname = null;
+        var lastname = null;
+        function userData(userdata){
+          if(userdata.google){
+            useremail = userdata.google.email;
+            firstname = userdata.google.firstname;
+            lastname = userdata.google.lastname;
+          }
+          else if(userdata.fb){
+            useremail = userdata.fb.email;
+            firstname = userdata.fb.firstname;
+            lastname = userdata.fb.lastname;
+          }
+          console.log(useremail);
+          console.log("in");
+        }
+        console.log("out"+useremail);
+        function productData(productdata){
+          price_history_file = productdata.price_history_file;
+          current_price = productdata.current_price;
+          title = productdata.title;
+          //console.log(title);
+        }
+        Product.findOne({'_id' : product},function(err,Products) {
           if(err)
             console.log(err);
-          else
-            userData = JSON.stringify(userdata);
-            res.end(userData);
+          else{
+            productData(Products);
+          }
         });
-        Product.findOne({'_id' : product},function(err,productdata) {
+        User.findOne({'_id' : user},function(err,Users) {
           if(err)
             console.log(err);
-          else
-            productData = JSON.stringify(productdata);
+          else{
+            userData(Users);
+          }
         });
-        var priceHistoryFile = require('../data/'+productData.price_history_file);
+
+        var priceHistoryFile = require('../data/'+price_history_file+'.json');
+        res.end(priceHistoryFile);
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -48,7 +78,7 @@ module.exports = function(app) {
 
         price_inc = "";
         price_dec = "";
-        current_price = parseInt(productData.current_price);
+        current_price = parseInt(current_price);
         last_price = priceHistoryFile.price.replace(",", "");
         last_price = parseInt(last_price);
         price_difference = current_price - last_price;
@@ -69,12 +99,12 @@ module.exports = function(app) {
 
         var mailOptions = {
             from: 'rtpiservice@gmail.com',
-            to: req.body.to,
+            to: useremail,
             subject: 'Price Change Notification',
             template: 'priceChange',
             context: {
-                username: userData.firstName + userData.lastName,
-                product: productData.title,
+                username: firstname + lastname,
+                product: title,
                 previous_price: last_price,
                 current_price: current_price,
                 price_inc: price_inc,
