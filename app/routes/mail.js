@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 var fs = require('fs');
-var productDetails = require('../data/productDetails.json');
+var productDetails = require('../data/RimezsBelliesBlack.json');
 var hbs = require('nodemailer-express-handlebars');
 module.exports = function(app) {
 
