@@ -67,7 +67,7 @@ module.exports = function(app){
 		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
-			/*else{
+			else{
 				console.log('Records fetched successfully');
 				records.forEach(function(record, index){
 					Product.find({'_id': record.product_id}, function(err, data){
@@ -78,9 +78,9 @@ module.exports = function(app){
 						}
 					})
 				});
-			}*/
+			}
 		});
-		res.render('wishlist', { title: 'Wishlist', dataArray: dataArray, user: req.user});
+		res.render('wishlist', { title: 'Wishlist', user: req.user});
 	});
 
 	// route for facebook authentication and login
