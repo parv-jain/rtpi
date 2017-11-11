@@ -18,6 +18,7 @@ module.exports = function(app) {
             console.log(err);
           else
             userData = JSON.stringify(userdata);
+            res.end(userData);
         });
         Product.findOne({'_id' : product},function(err,productdata) {
           if(err)
@@ -25,7 +26,6 @@ module.exports = function(app) {
           else
             productData = JSON.stringify(productdata);
         });
-        res.end('user '+user+' '+userData+' product'+product);
         var priceHistoryFile = require('../data/'+productData.price_history_file);
         var transporter = nodemailer.createTransport({
             service: 'gmail',
