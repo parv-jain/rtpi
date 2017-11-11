@@ -9,6 +9,9 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/auth');
 }
 
+var Product = require('../models/product');
+var User = require('../models/user');
+var Wishlist = require('../models/wishlist');
 
 module.exports = function(app){
 
@@ -39,6 +42,26 @@ module.exports = function(app){
 	/* route for tracking product */
 	app.get('/track', isAuthenticated, function(req, res) {
 		// left to code
+		var product_id = req.body.product_id;
+		var user_id = req.body.user_id;
+		//check if product already exists
+		Product.findOne({ '_id' : product_id }, function(err, product) {
+			if (err)
+				console.log(err);
+			//if product already exists in db
+			if (product) {
+				var newWishlist = new Wishlist();
+				newWishlist.user_id = user._id;
+				newWishlist.product_id = product._id;
+			}
+			newWishlist.save(function(err) {
+					if (err)
+							throw err;
+					else{
+						console.log('Details saved to database');
+					}
+			});
+		});
 	});
 
 	// route for facebook authentication and login

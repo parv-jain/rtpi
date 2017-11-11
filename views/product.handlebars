@@ -6,7 +6,11 @@
     <p class="lead">Currrent Price: {{product.current_price}}</p>
     <p class="lead">Currrent Time: {{product.current_time}}</p>
 
-    <a href="/track"><button class="btn btn-primary">Track</button></a>
+    <form action="/track" method="get">
+      <input type="hidden" value="{{product._id}}" name="product_id">
+      <input type="hidden" value="{{user._id}}" name="user_id">
+      <button class="btn btn-primary" type="submit">Track</button>
+    </form>
 
   </div>
 </div>

@@ -28,7 +28,7 @@ module.exports = function(app){
                 var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
                 json.current_time = current_time;
 
-                res.render('product', { title: 'Product', product: json});
+                res.render('product', { title: 'Product', product: json, user: req.user});
 
                 //write product details to database
                 //check if product already exists
@@ -113,7 +113,7 @@ module.exports = function(app){
               var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
               json.current_time = current_time;
 
-              res.render('product', { title: 'Product', product: json});
+              res.render('product', { title: 'Product', product: json, user: req.user});
 
               //write product details to database
               //check if product already exists
@@ -207,7 +207,7 @@ module.exports = function(app){
               var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
               json.current_time = current_time;
 
-              res.render('product', { title: 'Product', product: json});
+              res.render('product', { title: 'Product', product: json, user: req.user});
               //write product details to database
               //check if product already exists
               Product.findOne({ 'price_history_file' : price_history_file }, function(err, product) {
