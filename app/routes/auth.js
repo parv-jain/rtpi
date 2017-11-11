@@ -43,7 +43,7 @@ module.exports = function(app){
 	/* route for tracking product */
 	app.get('/track', isAuthenticated, function(req, res) {
 		// left to code
-		var url_parts = url.parse(request.url, true);
+		var url_parts = url.parse(req.url, true);
 		var query = url_parts.query;
 
 		var product_id = query.product_id;
@@ -51,25 +51,17 @@ module.exports = function(app){
 		//check if product already exists
 		res.render(product_id);
 		res.render(user_id);
-		Product.findOne({ '_id' : product_id }, function(err, product) {
+		var newWishlist = new Wishlist();
+		newWishlist.user_id = user._id;
+		newWishlist.product_id = product._id;
+		newWishlist.save(function(err) {
 			if (err)
-				console.log(err);
-			//if product already exists in db
-			if (product) {
-				var newWishlist = new Wishlist();
-				newWishlist.user_id = user._id;
-				newWishlist.product_id = product._id;
+					throw err;
+			else{
+				console.log('Details saved to database');
 			}
-			newWishlist.save(function(err) {
-					if (err)
-							throw err;
-					else{
-						console.log('Details saved to database');
-					}
-			});
 		});
 	});
-
 	// route for facebook authentication and login
 	app.get('/auth/facebook',
 		passport.authenticate('facebook', { scope : ['email'] }
