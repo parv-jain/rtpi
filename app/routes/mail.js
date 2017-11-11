@@ -5,10 +5,10 @@ module.exports = function(app) {
 
     app.post('/sendMail', function(req, res) {
 
-        var email = req.body.user;
+        var user = req.body.user;
         var product = req.body.product;
-        console.log(email);
-        console.log(product);
+        res.end(user+product);
+
       /*  var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
