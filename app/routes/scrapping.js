@@ -28,7 +28,6 @@ module.exports = function(app){
                 var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
                 json.current_time = current_time;
 
-                res.render('product', { title: 'Product', product: json, user: req.user});
 
                 //write product details to database
                 //check if product already exists
@@ -56,6 +55,7 @@ module.exports = function(app){
                           console.log('Details saved to database');
                         }
                     });
+                    res.render('product', { title: 'Product', product: product, user: req.user});
                   } else {
                     var newProduct = new Product();
                     newProduct.title = json.title;
@@ -75,6 +75,8 @@ module.exports = function(app){
                           console.log('Details saved to database');
                         }
                     });
+                    res.render('product', { title: 'Product', product: newProduct, user: req.user});
+
                   }
                 });
               }
@@ -113,7 +115,6 @@ module.exports = function(app){
               var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
               json.current_time = current_time;
 
-              res.render('product', { title: 'Product', product: json, user: req.user});
 
               //write product details to database
               //check if product already exists
@@ -141,6 +142,8 @@ module.exports = function(app){
                         console.log('Details saved to database');
                       }
                   });
+                  res.render('product', { title: 'Product', product: product, user: req.user});
+
                 } else {
                   var newProduct = new Product();
                   newProduct.title = json.title;
@@ -160,6 +163,8 @@ module.exports = function(app){
                         console.log('Details saved to database');
                       }
                   });
+                  res.render('product', { title: 'Product', product: newPrduct, user: req.user});
+
                 }
               });
           }
@@ -207,7 +212,6 @@ module.exports = function(app){
               var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
               json.current_time = current_time;
 
-              res.render('product', { title: 'Product', product: json, user: req.user});
               //write product details to database
               //check if product already exists
               Product.findOne({ 'price_history_file' : price_history_file }, function(err, product) {
@@ -234,6 +238,8 @@ module.exports = function(app){
                         console.log('Details saved to database');
                       }
                   });
+                  res.render('product', { title: 'Product', product: product, user: req.user});
+
                 } else {
                   var newProduct = new Product();
                   newProduct.title = json.title;
@@ -253,6 +259,8 @@ module.exports = function(app){
                         console.log('Details saved to database');
                       }
                   });
+                  res.render('product', { title: 'Product', product: product, user: req.user});
+
                 }
               });
           }
