@@ -65,25 +65,30 @@ module.exports = function(app){
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
 		var wishes = new Array();
-		console.log(typeOf(wishes));
-		Wishlist.find({'user_id' : res.user._id},function(err,records) {
+		var c=0;
+		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
 			else{
 				console.log('Records fetched successfully');
 				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
-							wishes.push(data);
-							res.json(data);
+							if(err)
+								console.log(err);
+							else{
+								//data=JSON.stringify(data);
+								wishes.push(data);
+							}
+							c++;
+							if (c==records.length){
+								res.render('wishlist', { title: 'Wishlist', wishes: JSON.stringify(wishes), user: req.user});
+							}
+							console.log(wishes);
 					})
 				});
 			}
 		});
-		
-		//res.json(wishes);
-		//res.render('wishlist', { title: 'Wishlist', wishes: wishes, user: req.user});
 	});
-
 	// route for facebook authentication and login
 	app.get('/auth/facebook',
 		passport.authenticate('facebook', { scope : ['email'] }

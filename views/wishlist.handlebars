@@ -3,7 +3,29 @@
 
     <p class="lead">Products in your wishlist.</p>
 
-    {{wishes}}
+    <table class="table table-striped table-inverse">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Time</th>
+          <th>MRP</th>
+          <th>Set Alerts</th>
+        </tr>
+      </thead>
+      <tbody id="wishes">
 
+      </tbody>
+    </table>
   </div>
 </div>
+<script>
+  var wishlist = {{{wishes}}};
+  wishlist.forEach(function(key){
+    key.forEach(function(k){
+        var row='<tr><td>'+k._id+'</td><td>'+k.title+'</td><td>'+k.current_price+'</td><td>'+k.current_time+'</td><td>'+k.mrp+'</td><td><a href="/sendMail"><button class="btn btn-info">Set Alerts</button></a></td></tr>';
+        document.getElementById('wishes').innerHTML+=row;
+    });
+  });
+</script>
