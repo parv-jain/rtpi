@@ -48,10 +48,9 @@ module.exports = function(app){
 
 		var product_id = query.product_id;
 		var user_id = query.user_id;
-		//check if product already exists
 		res.render(product_id);
 		res.render(user_id);
-		var newWishlist = new Wishlist();
+		/*var newWishlist = new Wishlist();
 		newWishlist.user_id = user._id;
 		newWishlist.product_id = product._id;
 		newWishlist.save(function(err) {
@@ -60,7 +59,7 @@ module.exports = function(app){
 			else{
 				console.log('Details saved to database');
 			}
-		});
+		});*/
 	});
 	// route for facebook authentication and login
 	app.get('/auth/facebook',
