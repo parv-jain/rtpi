@@ -64,7 +64,25 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
-		res.render('wishlist', { title: 'Wishlist', user: req.user });
+		Wishlist.find({'user_id' : req.user._id},function(err,records) {
+			var dataArray;
+			if (err)
+				console.log(err);
+			else{
+				console.log('Records fetched successfully');
+				records.forEach(function(record, index){
+					Product.find({'_id': record.product_id}, function(err, data){
+						if (err)
+							console.log(err);
+						else{
+							dataArray.push(data);
+						}
+					})
+				});
+			}
+		});
+
+		res.render('wishlist', { title: 'Wishlist', user: req.user, dataArray: dataArray});
 	});
 
 	// route for facebook authentication and login
