@@ -69,13 +69,9 @@ module.exports = function(app){
 				console.log(err);
 			else{
 				console.log('Records fetched successfully');
-				records.forEach(function(record, index){
+				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
-						if (err)
-							console.log(err);
-						else{
-							dataArray.push(data);
-						}
+							datas.push(data);
 					})
 				});
 			}
