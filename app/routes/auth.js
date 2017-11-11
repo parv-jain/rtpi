@@ -64,7 +64,7 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
-		var wishes = [],i=0;
+		wishes = new JSONArray();
 		Wishlist.find({'user_id' : req.user._id},function(err,records) {
 			if (err)
 				console.log(err);
@@ -72,8 +72,7 @@ module.exports = function(app){
 				console.log('Records fetched successfully');
 				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
-							wishes[i] = data;
-							i+=1;
+							wishes.append(data);
 					})
 				});
 			}
