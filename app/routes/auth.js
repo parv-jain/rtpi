@@ -64,8 +64,9 @@ module.exports = function(app){
 
 	// route for Wishlist
 	app.get('/wishlist', isAuthenticated, function(req, res){
-		wishes = new Array();
-		Wishlist.find({'user_id' : req.user._id},function(err,records) {
+		var wishes = new Array();
+		console.log(typeOf(wishes));
+		Wishlist.find({'user_id' : res.user._id},function(err,records) {
 			if (err)
 				console.log(err);
 			else{
@@ -73,6 +74,7 @@ module.exports = function(app){
 				records.map(record => {
 					Product.find({'_id': record.product_id}, function(err, data){
 							wishes.append(data);
+							res.json(data);
 					})
 				});
 			}
