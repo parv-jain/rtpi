@@ -33,19 +33,18 @@ module.exports = function(app) {
               if(err)
                 console.log(err);
               else{
-                console.log('Users '+Users.google.email);
                 var mailOptions = {
                     from: 'rtpiservice@gmail.com',
                     to: Users.google.email,
                     subject: 'Price Change Notification',
                     template: 'priceChange',
                     context: {
-                        username: Users.google.firstName + Users.google.lastName,
+                        username: Users.google.firstName + ' ' + Users.google.lastName,
                         product: Products.title,
-                        previous_price: last_price,
-                        current_price: current_price,
+                        previous_price: parseInt(Products.current_price)+40,
+                        current_price: parseInt(Products.current_price),
                         price_inc: price_inc,
-                        price_dec: price_dec
+                        price_dec: 40
                     }
                 };
                 var transporter = nodemailer.createTransport({
