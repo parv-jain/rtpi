@@ -1,4 +1,4 @@
-appendFilevar request = require('request'); // for creating http requests
+var request = require('request'); // for creating http requests
 var cheerio = require('cheerio'); // for web scrapping
 var moment = require('moment');
 var fs = require('fs'); // for the file system
