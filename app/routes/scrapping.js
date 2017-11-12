@@ -174,7 +174,7 @@ module.exports = function(app){
 
 
   // api to get amazon products
-  app.post('/amazon/products/', function(req, res) {
+  app.post('/amazon-products/', function(req, res) {
       var url = req.body.url;
       request(url, function(error, response, html) {
           if (!error) {
