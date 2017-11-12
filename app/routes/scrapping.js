@@ -1,4 +1,4 @@
-var request = require('request'); // for creating http requests
+appendFilevar request = require('request'); // for creating http requests
 var cheerio = require('cheerio'); // for web scrapping
 var moment = require('moment');
 var fs = require('fs'); // for the file system
@@ -128,7 +128,7 @@ module.exports = function(app){
                     price: json.current_price
                   }
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(data, null, 4), function() {
+                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(data, null, 4), function() {
                       console.log('Details successfully appended to file %s.json',price_history_file);
                   });
 
@@ -153,7 +153,7 @@ module.exports = function(app){
                   newProduct.current_time = json.current_time;
 
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
+                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
                       console.log('Details successfully written to file %s.json',price_history_file);
                   });
                   newProduct.save(function(err) {
@@ -174,7 +174,7 @@ module.exports = function(app){
 
 
   // api to get amazon products
-  app.post('/amazon-products/', function(req, res) {
+  app.post('/amazon-products', function(req, res) {
       var url = req.body.url;
       request(url, function(error, response, html) {
           if (!error) {
@@ -224,7 +224,7 @@ module.exports = function(app){
                     price: json.current_price
                   }
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(data, null, 4), function() {
+                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(data, null, 4), function() {
                       console.log('Details successfully appended to file %s.json',price_history_file);
                   });
 
@@ -249,7 +249,7 @@ module.exports = function(app){
                   newProduct.current_time = json.current_time;
 
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
+                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
                       console.log('Details successfully written to file %s.json',price_history_file);
                   });
                   newProduct.save(function(err) {
