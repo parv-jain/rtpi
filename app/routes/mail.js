@@ -50,8 +50,8 @@ module.exports = function(app) {
                 var transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: 'rtpiservice@gmail.com',
-                        pass: 'rtpipassword'
+                        user: 'realtimeproductinspector@gmail.com',
+                        pass: 'RTPIaccount'
                     }
                 });
 
