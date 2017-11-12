@@ -12,7 +12,6 @@ module.exports = function(app) {
         var user = req.body.user;
         var product = req.body.product;
 
-
         Product.findOne({'_id' : product},function(err,Products) {
           if(err)
             console.log(err);

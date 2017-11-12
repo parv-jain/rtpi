@@ -153,7 +153,7 @@ module.exports = function(app){
                   newProduct.current_time = json.current_time;
 
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
+                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
                       console.log('Details successfully written to file %s.json',price_history_file);
                   });
                   newProduct.save(function(err) {
@@ -224,7 +224,7 @@ module.exports = function(app){
                     price: json.current_price
                   }
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(data, null, 4), function() {
+                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(data, null, 4), function() {
                       console.log('Details successfully appended to file %s.json',price_history_file);
                   });
 
@@ -249,7 +249,7 @@ module.exports = function(app){
                   newProduct.current_time = json.current_time;
 
                   // writing the changes to the file and this file will then be processed in mail.js
-                  fs.appendFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
+                  fs.writeFile("app/data/"+price_history_file+".json", JSON.stringify(json, null, 4), function() {
                       console.log('Details successfully written to file %s.json',price_history_file);
                   });
                   newProduct.save(function(err) {
