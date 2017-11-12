@@ -70,7 +70,8 @@ module.exports = function(app) {
                 transporter.sendMail(mailOptions, function(error, info) {
                     if (error) throw error;
                     else {
-                        res.json({ "success": info.response });
+                        console.log({ "success": info.response });
+                        res.render('mailsent', { title: '+1 Mail Sent', user: req.user });
                     }
                 });
 
