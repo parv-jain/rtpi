@@ -16,7 +16,7 @@ module.exports = function(app) {
           if(err)
             console.log(err);
           else{
-            var priceHistoryFile = require('../data/'+Products.price_history_file+'.json');
+            //var priceHistoryFile = require('../data/'+Products.price_history_file+'.json');
             price_inc = "";
             price_dec = "";
             current_price = parseInt(Products.currrent_price);
