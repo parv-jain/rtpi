@@ -20,7 +20,7 @@ module.exports = function(app) {
             price_inc = "";
             price_dec = "";
             current_price = parseInt(Products.currrent_price);
-            last_price = priceHistoryFile.price.replace(",", "");
+            last_price = current_price+40;
             last_price = parseInt(last_price);
             price_difference = current_price - last_price;
             if (price_difference > 0) {
