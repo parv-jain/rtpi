@@ -22,7 +22,9 @@ module.exports = function(app) {
             console.log(Products.current_price);
             console.log(Products.current_price.replace(/\,/g, ""));
             current_price = Products.current_price.replace(/\,/g, "");
+            console.log(current_price);
             current_price = parseInt(current_price);
+            console.log(current_price);
             last_price = current_price+40;
             last_price = parseInt(last_price);
             price_difference = current_price - last_price;
