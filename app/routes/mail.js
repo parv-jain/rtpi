@@ -27,6 +27,7 @@ module.exports = function(app) {
             console.log(current_price);
             last_price = current_price+40;
             last_price = parseInt(last_price);
+            console.log(last_price);
             price_difference = current_price - last_price;
             if (price_difference > 0) {
                 price_inc = price_difference;
@@ -46,8 +47,8 @@ module.exports = function(app) {
                     context: {
                         username: Users.google.firstName + ' ' + Users.google.lastName,
                         product: Products.title,
-                        previous_price: parseInt(Products.current_price)+40,
-                        current_price: parseInt(Products.current_price),
+                        previous_price: last_price,
+                        current_price: current_price,
                         price_inc: price_inc,
                         price_dec: 40
                     }
