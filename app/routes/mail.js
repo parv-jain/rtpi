@@ -19,6 +19,8 @@ module.exports = function(app) {
             //var priceHistoryFile = require('../data/'+Products.price_history_file+'.json');
             price_inc = "";
             price_dec = "";
+            console.log(Products.current_price);
+            console.log(Products.current_price.replace(/\,/g, ""));
             current_price = Products.current_price.replace(/\,/g, "");
             current_price = parseInt(current_price);
             last_price = current_price+40;
