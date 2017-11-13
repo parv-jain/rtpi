@@ -40,7 +40,7 @@ module.exports = function(app) {
                 console.log(err);
               else{
                 var mailOptions = {
-                    from: 'rtpiservice@gmail.com',
+                    from: 'realtimeproductinspector@gmail.com',
                     to: Users.google.email,
                     subject: 'Price Change Notification',
                     template: 'priceChange',
