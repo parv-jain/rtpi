@@ -191,27 +191,32 @@ module.exports = function(app){
               // Throw away extra white space and non-alphanumeric characters.
               current_price = current_price.replace(/\s+/g, "");
               json.current_price = current_price;
+console.log("cp: "+current_price);
 
 
               mrp = $("[class='a-text-strike']").text();
+console.log("mrp: "+mrp)
               if (mrp) {
                   mrp = mrp.replace(/\s+/g, "");
               } else {
                   mrp = current_price;
               }
+console.log("mrp: "+mrp)
 
               json.mrp = mrp;
 
               title = $("[id='productTitle']").text();
               title = title.replace(/[^a-zA-Z ]/g, "").trim(0, 2);
               json.title = title;
+console.log("title: "+mrp)
 
               var price_history_file = json.title.replace(/[^a-zA-Z0-9]/g, '');
+console.log("file:"+price_history_file);
               json.price_history_file = price_history_file;
 
               var current_time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
               json.current_time = current_time;
-
+console.log("current_time:"+current_time);
               //write product details to database
               //check if product already exists
               Product.findOne({ 'price_history_file' : price_history_file }, function(err, product) {
