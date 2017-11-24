@@ -243,6 +243,7 @@ console.log("current_time:"+current_time);
                         console.log('Details saved to database');
                       }
                   });
+                  console.log(product);
                   res.render('product', { title: 'Product', product: product, user: req.user});
 
                 } else {
