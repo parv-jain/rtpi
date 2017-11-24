@@ -203,7 +203,7 @@ module.exports = function(app){
               json.mrp = mrp;
 
               title = $("[id='productTitle']").text();
-              title = title.replace(/[^a-zA-Z ]/g, "").trim(0, 2);
+              title = title.replace(/[^a-zA-Z0-9 ]/g, "").trim(0, 2);
               json.title = title;
 
               var price_history_file = json.title.replace(/[^a-zA-Z0-9]/g, '');
