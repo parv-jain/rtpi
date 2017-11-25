@@ -25,7 +25,8 @@ module.exports = function(app) {
             console.log(current_price);
             current_price = parseInt(current_price);
             console.log(current_price);
-            last_price = current_price+40;
+            var r = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+            last_price = current_price+r;
             last_price = parseInt(last_price);
             console.log(last_price);
             price_difference = current_price - last_price;
@@ -50,7 +51,7 @@ module.exports = function(app) {
                         previous_price: last_price,
                         current_price: current_price,
                         price_inc: price_inc,
-                        price_dec: 40
+                        price_dec: r
                     }
                 };
                 var transporter = nodemailer.createTransport({
